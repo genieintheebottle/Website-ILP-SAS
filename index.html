@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web IL SAS</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div>
+        <img class="background" src="background.svg" alt="background">
+    </div>
+    <div>
+        <img class="banner" src="banner.png" alt="banner">
+    </div>
+    <div>
+        <img class="logo" src="logo.png" alt="logo">
+    </div>
+    <div class="horizontal-line"></div>
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#pendahuluan-all">Pendahuluan</a></li>
+            <li class="dropdown">
+                <a href="wisata.html">Wisata ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="wisata.html#lokasi">Lokasi</a></li>
+                    <li><a href="wisata.html#tentang">Tentang Wisata</a></li>
+                    <li><a href="wisata.html#funfact">Fun Fact</a></li>
+                    <li><a href="wisata.html#dayatarik">Daya Tarik</a></li>
+                </ul>
+            </li>
+            <li><a href="sejarah.html">Sejarah Wisata</a></li>
+            <li><a href="dafpus.html">Daftar Pustaka</a></li>
+            <li><a href="index.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <section id="anggota" class="anggota">
+    <h2>Anggota Kelompok 6</h2>
+    </section>
+
+    <div class="foto-hover">
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="aretha.webp" alt="foto-anggota">
+            <span class="foto-text">Aretha/3</span>
+        </div>
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="Abel.jpeg" alt="foto-anggota">
+            <span class="foto-text">Abel/6</span>
+        </div>
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="eugenia.png" alt="foto-anggota">
+            <span class="foto-text">Eugenia/10</span>
+        </div>
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="kimiko.webp" alt="foto-anggota">
+            <span class="foto-text">Kimiko/13</span>
+        </div>
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="christalyn.webp" alt="foto-anggota">
+            <span class="foto-text">Christalyn/26</span>
+        </div>
+        <div class="foto-anggota-hover">
+            <img class="foto-anggota" src="rebecca.webp" alt="foto-anggota">
+            <span class="foto-text">Rebecca/33</span>
+        </div>
+    </div>
+
+    <div class="pendahuluan-all">
+        <section class="pendahuluan-title">
+            <h2>Pendahuluan</h2>
+        </section>
+        <section class="pendahuluan-isi">
+            <p>
+                Puji syukur kami panjatkan kepada Tuhan Yang Maha Esa atas karunia dan berkat-Nya yang berlimpah
+                sehingga kami, kelompok 6 kelas IX-1 dapat menyelesaikan tugas Teknologi, Informatika, dan Komunikasi
+                (TIK) dalam rangka pengambilan nilai Sumatif Akhir Semester (SAS) dengan lancar dan tepat waktu. Laporan
+                Web ini berisikan 2 wisata yang berada di Indonesia, diantaranya berupa Wisata Gunung Bromo dan Wisata
+                Taman Nasional Bunaken. </p>
+
+            <p>
+                Tujuan dari pembuatan laporan web ini adalah sebagai penambah wawasan bagi para pembaca mengenai wisata
+                yang ada di Indonesia (dalam hal ini wisata Gunung Bromo dan Wisata Taman Nasional Bunaken) seperti
+                deskripsi, sejarah, fun facts, keunggulan, dan daya tarik. </p>
+
+            <p>
+                Tentunya, proses penyusunan laporan web ini tidak selalu berjalan lancar seperti yang diharapkan.
+                Terdapat banyak tantangan dan masalah yang kami hadapi. Tanpa dukungan dan bimbingan dari beberapa
+                pihak, laporan web ini tidak akan bisa selesai dengan baik. Oleh karena itu kami mengucapkan banyak
+                terima kasih kepada seluruh pihak yang telah berkontribusi selama proses pembuatan laporan web ini. </p>
+
+            <p>
+                Kami tentu menyadari bahwa laporan web ini jauh dari kata sempurna. Oleh karena itu, kami mengucapkan
+                mohon maaf sebesar-besarnya apabila di dalam laporan web ini terdapat kesalahan kata maupun ejaan yang
+                menyinggung para pembaca. Demi meningkatkan kualitas laporan web ini kedepannya, kritik dan saran dari
+                para pembaca sangat kami harapkan. Semoga web ini dapat bermanfaat bagi para pembaca dalam meningkatkan
+                wawasan wisata Indonesia. </p>
+        </section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pendahuluanLink = document.querySelector('a[href="index.html#pendahuluan-all"], a[href="#pendahuluan-all"]');
+            const pendahuluanSection = document.querySelector(".pendahuluan-all"); // FIXED: Use class selector
+
+            if (pendahuluanLink && pendahuluanSection) {
+                pendahuluanLink.addEventListener("click", function (event) {
+                    if (window.location.pathname.includes("index.html")) {
+                        event.preventDefault();
+
+                        const navbarHeight = document.querySelector("nav").offsetHeight;
+                        const offset = 150;
+                        const targetPosition = pendahuluanSection.getBoundingClientRect().top + window.scrollY - navbarHeight - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: "smooth"
+                        });
+
+
+                        pendahuluanSection.classList.add("show");
+                    }
+                });
+            }
+
+            function revealOnScroll() {
+                if (!pendahuluanSection) return;
+
+                const sectionTop = pendahuluanSection.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight / 1.4;
+
+                if (sectionTop < triggerPoint && !pendahuluanSection.classList.contains("show")) {
+                    pendahuluanSection.classList.add("show");
+                }
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+
+            if (window.location.hash) {
+                let target = document.querySelector(window.location.hash);
+                if (target) {
+                    setTimeout(() => {
+                        const navbarHeight = document.querySelector("nav").offsetHeight;
+                        const offset = 150;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight - offset;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: "smooth"
+                        });
+
+                        target.classList.add("show");
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
